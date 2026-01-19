@@ -1,2 +1,36 @@
-# ExplainMyPipeline
-An AI powered application that can guide the begginers in DevOps and DevSecOps errors...!!1
+# ExplainMyPipeline – AI DevOps & DevSecOps Mentor
+
+## Problem Statement
+DevOps beginners struggle to understand CI/CD failures, Docker errors, and system logs. Existing tools are designed for experts and focus on dashboards rather than clear explanations.
+
+## Solution
+ExplainMyPipeline is an AI-powered mentoring tool that converts DevOps logs into plain-language explanations, severity levels, safe fixes, and security-aware guidance.
+
+## How It Works
+1. User pastes a DevOps log or error
+2. AI analyzes the error
+3. Structured explanation is generated:
+   - What happened
+   - Severity
+   - How to fix
+   - Security note
+   - Beginner tip
+
+## Current Status
+This repository contains an early-stage prototype with:
+- Sample DevOps logs
+- Expected AI-generated explanations
+- Gemini prompt design
+
+Backend and UI integration are planned as future work.
+
+## Target Users
+- DevOps beginners
+- Students
+- Junior engineers
+- DevSecOps learners
+
+## Future Enhancements
+- Web interface
+- Real-time Gemini API integration
+- Support for more CI/CD tools
