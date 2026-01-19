@@ -1,0 +1,2 @@
+ERROR: failed to solve: permission denied
+executor failed running [/bin/sh -c apt-get update]: exit code 100
