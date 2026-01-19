@@ -1,0 +1,14 @@
+🔍 What happened:
+The CI pipeline failed during the Docker build step due to insufficient permissions.
+
+⚠️ Severity:
+Medium – Pipeline execution stopped.
+
+🛠️ How to fix:
+Review the workflow permissions and ensure required access is granted.
+
+🔐 Security note:
+Avoid exposing secrets directly in CI workflows.
+
+📘 Beginner tip:
+Test Docker builds locally before pushing changes to CI.
