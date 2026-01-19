@@ -1,0 +1,14 @@
+🔍 What happened:
+The Docker build failed because the container does not have permission to access required files or directories.
+
+⚠️ Severity:
+Medium – Build blocking error.
+
+🛠️ How to fix:
+Ensure the correct file permissions are set or avoid running privileged commands during build.
+
+🔐 Security note:
+Running commands as root may introduce security risks. Follow the principle of least privilege.
+
+📘 Beginner tip:
+Always verify file permissions when working with Docker images.
