@@ -1,20 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>ExplainMyPipeline</title>
   <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-  <h1>ExplainMyPipeline</h1>
 
-  <textarea id="log" placeholder="Paste your CI/CD log here"></textarea>
-  <button onclick="analyze()">Analyze</button>
+  <div class="container">
+    <h1>ExplainMyPipeline</h1>
+    <p class="subtitle">
+      AI-powered DevOps & DevSecOps mentor for beginners.
+    </p>
 
-  <pre id="output"></pre>
+    <label for="log">Paste your DevOps or CI/CD error</label>
+    <textarea id="log" placeholder="Example: ERROR: failed to solve: permission denied"></textarea>
+
+    <button onclick="analyze()">Analyze</button>
+
+    <div id="output" class="output-box">
+      <span class="muted">Analysis will appear here…</span>
+    </div>
+  </div>
 
   <script>
     function analyze() {
       const log = document.getElementById("log").value;
+      const output = document.getElementById("output");
+
+      if (!log.trim()) {
+        output.innerHTML = "<span class='error'>Please paste a log to analyze.</span>";
+        return;
+      }
+
+      output.innerHTML = "<span class='loading'>Analyzing log…</span>";
 
       fetch("/analyze", {
         method: "POST",
@@ -23,14 +42,14 @@
       })
       .then(res => res.json())
       .then(data => {
-        document.getElementById("output").innerText =
-`What happened: ${data.what_happened}
-Severity: ${data.severity}
-How to fix: ${data.fix}
-Security note: ${data.security}
-Beginner tip: ${data.tip}`;
+        output.innerText = data.result;
+      })
+      .catch(() => {
+        output.innerHTML =
+          "<span class='error'>Analysis failed due to a temporary service issue.</span>";
       });
     }
   </script>
+
 </body>
 </html>
