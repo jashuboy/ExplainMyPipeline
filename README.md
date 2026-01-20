@@ -42,4 +42,4 @@ Backend and UI integration are planned as future work.
 ![Sample Output](images/sample_input_output.png)
 
 ## Mock User Interface
-![Mock UI](images/mock_ui.png)
+![Mock UI](images/mockui.png)
