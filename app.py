@@ -1,6 +1,12 @@
 from flask import Flask, request, jsonify, render_template
+import os
+import google.generativeai as genai
 
 app = Flask(__name__)
+
+# Configure Gemini
+genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+model = genai.GenerativeModel("gemini-1.5-flash")
 
 @app.route("/")
 def home():
@@ -8,19 +14,26 @@ def home():
 
 @app.route("/analyze", methods=["POST"])
 def analyze():
-    data = request.json
-    log = data.get("log", "")
+    log = request.json.get("log", "")
 
-    # TEMP: mock response (replace with Gemini later)
-    response = {
-        "what_happened": "The build failed due to permission issues.",
-        "severity": "Medium",
-        "fix": "Check file permissions in the Dockerfile.",
-        "security": "Avoid running containers as root.",
-        "tip": "Verify permissions before building images."
-    }
+    prompt = f"""
+You are an AI DevOps and DevSecOps mentor for beginners.
 
-    return jsonify(response)
+Analyze the following DevOps log and respond in this structure:
+
+What happened:
+Severity:
+How to fix:
+Security note:
+Beginner tip:
+
+Log:
+{log}
+"""
+
+    response = model.generate_content(prompt)
+
+    return jsonify({"result": response.text})
 
 if __name__ == "__main__":
     app.run(debug=True)
