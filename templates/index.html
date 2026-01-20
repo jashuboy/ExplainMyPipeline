@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ExplainMyPipeline</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <h1>ExplainMyPipeline</h1>
+
+  <textarea id="log" placeholder="Paste your CI/CD log here"></textarea>
+  <button onclick="analyze()">Analyze</button>
+
+  <pre id="output"></pre>
+
+  <script>
+    function analyze() {
+      const log = document.getElementById("log").value;
+
+      fetch("/analyze", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ log })
+      })
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("output").innerText =
+`What happened: ${data.what_happened}
+Severity: ${data.severity}
+How to fix: ${data.fix}
+Security note: ${data.security}
+Beginner tip: ${data.tip}`;
+      });
+    }
+  </script>
+</body>
+</html>
