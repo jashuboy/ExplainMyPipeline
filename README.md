@@ -34,3 +34,12 @@ Backend and UI integration are planned as future work.
 - Web-based interface
 - Live Gemini API integration
 - Support for more CI/CD tools
+
+## Architecture & Workflow
+![Workflow](images/workflow.png)
+
+## Sample Log Input & AI Output
+![Sample Output](images/sample_input_output.png)
+
+## Mock User Interface
+![Mock UI](images/mock_ui.png)
