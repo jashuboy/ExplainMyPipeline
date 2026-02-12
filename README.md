@@ -16,6 +16,28 @@ ExplainMyPipeline is an AI-powered mentoring tool that converts DevOps logs into
    - Security note
    - Beginner tip
 
+## Setup Instructions
+### 1. Clone the repository
+git clone https://github.com/jashuboy/ExplainMyPipeline.git
+cd ExplainMyPipeline
+
+### 2. Install dependencies
+pip install -r requirements.txt
+
+### 3. Set Gemini API key
+
+Windows:
+set GEMINI_API_KEY=your_api_key_here
+
+Mac/Linux:
+export GEMINI_API_KEY=your_api_key_here
+
+### 4. Run the app
+python app.py
+
+Open browser:
+http://127.0.0.1:5000
+
 ## Current Status
 This repository contains an early-stage prototype demonstrating:
 - Sample DevOps logs
